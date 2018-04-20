@@ -14,17 +14,21 @@
     
     <div class="container">
             <img title= "mainImage" src="assets/images/safari stamp.jpg" alt="main image">
-                    <div class="row">
+                 <div class="row">
                         <div class="col-md-6">
-                                <button id="audioPlay" class="audio" onclick=javascript:playSound("assets/audio/Africariff.mp3")>Play Sick Intro Music!</button>
-
                             <img id="winner" src="assets/images/winner.jpg" alt="Winner Image">
                             <img id="loser" src="assets/images/loser.jpg" alt="Loser Image">
                             <!-- <img id="coverImage" src="http://via.placeholder.com/700x150" alt="Cover Image"> -->
                             <h2 id="pressKeyTryAgain">Press Any Key to Try Again!</h2>
                         </div>
                         <div class"col-md-6">
-                                <button id="audioPause" class="audio">Pause Sick Intro Music...</button>
+
+                                <audio controls>
+                                    <source src="assets/audio/Africariff.mp3" type="audio/mp3">
+                                    <source src="horse.mp3" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                    
 
                             <h1>Press Any Key to Get Started!</h1>
                             <h3>Wins</h3>
