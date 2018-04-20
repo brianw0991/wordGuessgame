@@ -63,6 +63,13 @@ function resetGame() {
     updateDisplay();
 };
 
+function PlaySound(path) {
+    var audioElement = document.createElement("audioPlay");
+    audioElement.setAttribute("assets/audio/Africariff.mp3", path);
+    audioElement.play();
+  }
+  
+
 function updateDisplay() {
 
 document.getElementById("totalWins").innerText = wins;

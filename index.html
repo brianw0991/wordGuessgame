@@ -13,24 +13,28 @@
 <body>
     
     <div class="container">
-            <img title= "mainImage" src="http://via.placeholder.com/700x150" alt="main image">
+            <img title= "mainImage" src="assets/images/safari stamp.jpg" alt="main image">
                     <div class="row">
                         <div class="col-md-6">
-                            <img id="winner" src="/assets/images/winner.jpg" alt="Winner Image">
-                            <img id="loser" src="/assets/images/loser.jpg" alt="Loser Image">
-                            <img id="coverImage" src="http://via.placeholder.com/700x150" alt="Cover Image">
+                                <button id="audioPlay" class="audio" onclick=javascript:playSound("assets/audio/Africariff.mp3")>Play Sick Intro Music!</button>
+
+                            <img id="winner" src="assets/images/winner.jpg" alt="Winner Image">
+                            <img id="loser" src="assets/images/loser.jpg" alt="Loser Image">
+                            <!-- <img id="coverImage" src="http://via.placeholder.com/700x150" alt="Cover Image"> -->
                             <h2 id="pressKeyTryAgain">Press Any Key to Try Again!</h2>
                         </div>
                         <div class"col-md-6">
+                                <button id="audioPause" class="audio">Pause Sick Intro Music...</button>
+
                             <h1>Press Any Key to Get Started!</h1>
                             <h3>Wins</h3>
-                            <h5 id="totalWins"></h5>
-                            <h3>Current Word</h3>
-                            <h5 id=currentWord></h5>
+                            <h1 id="totalWins"></h1>
+                            <h3>Current Animal</h3>
+                            <h1 id=currentWord></h1>
                             <h3>Guesses Remaining</h3>
-                            <h5 id="remainingGuesses"></h5>
+                            <h1 id="remainingGuesses"></h1>
                             <h3>Letters Guessed</h3>
-                            <h5 id="guessedLetters"></h5> 
+                            <h1 id="guessedLetters"></h1> 
                         </div>
                     </div>
     </div>
