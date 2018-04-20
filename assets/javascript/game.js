@@ -9,68 +9,68 @@ var wordChoices = [
     "wildebeest",
     "zebra",
     "giraffe",
-    "crocodile"
+    "crocodile",
 ]
 
 // maximum number of attempts. 'const' cannot be reassigned or redeclared.
-const maxTries = 8
+const maxTries = 8;
 
 // variable that stores each guessed letter
-var guessedLetters = []
+var guessedLetters = [];
 
 // index of current word in array
 var currentWordIndex;
 
 // word being guessed
-var guessingWord = []
+var guessingWord = [];
 
 // players remaining guesses
-var remainingGuesses = 0
+var remainingGuesses = 0;
 
 // game started
-var gameStarted = false
+var gameStarted = false;
 
 // game finished
-var gameFinished = false
+var gameFinished = false;
 
 // log of wins
-var wins = 0
+var wins = 0;
 
 
 //
 function resetGame() {
-    remainingGuesses = maxTries
+    remainingGuesses = maxTries;
 
-    gameStarted = false
+    gameStarted = false;
 
     currentWordIndex = Math.floor(Math.random()*(wordChoices.length));
 
-    guessedLetters = []
+    guessedLetters = [];
 
-    guessingWord = []
+    guessingWord = [];
 
     for (var i = 0; i < wordChoices[currentWordIndex].length; i++) {
-        guessingWord = push("_");
+        guessingWord.push("_");
     }
 
-    document.getElementById("pressKeyTryAgain").style.cssText= "display: none";
+    document.getElementById("pressKeyTryAgain").style.cssText = "display: none";
 
     document.getElementById("loser").style.cssText = "display: none";
 
     document.getElementById("winner").style.cssText = "display: none";
 
 
-    updateGame()
+    updateDisplay();
 };
 
 function updateDisplay() {
 
-document.getElementById("totalWins").innerHTML = wins;
+document.getElementById("totalWins").innerText = wins;
 
-document.getElementById("currentWord").innerHTML = "";
+document.getElementById("currentWord").innerText = "";
 
-for (var i = 0; i < wordChoices.length; i++) {
-    document.getElementById("currentWord").innerText = guessingWord[i];
+for (var i = 0; i < guessingWord.length; i++) {
+    document.getElementById("currentWord").innerText += guessingWord[i];
 };
 document.getElementById("remainingGuesses").innerText = remainingGuesses;
 
@@ -79,17 +79,18 @@ document.getElementById("guessedLetters").innerText = guessedLetters;
 if (remainingGuesses <= 0) {
     document.getElementById("loser").style.cssText = "display: block";
 
-    document.getElementById("pressKeyTryAgain").style.css = "display: block";
-    hasFinished = true;
+    document.getElementById("pressKeyTryAgain").style.cssText = "display: block";
+    gameFinished = true;
 }
+}; 
 
-document.onkeyup = function(event) {
-    if(hasFinished) {
+document.onkeydown = function(event) {
+    if(gameFinished) {
     resetGame();
-    hasFinished = false;}
+    gameFinished = false;
 
- else {
-    if(event.keycode >= 65 && event.keyCode <= 90) {
+} else {
+    if(event.keyCode >= 65 && event.keyCode <= 90) {
         makeGuess(event.key.toLowerCase());
     }
 }
@@ -99,24 +100,27 @@ document.onkeyup = function(event) {
 function makeGuess(letter) {
     if(remainingGuesses > 0) {
         if(!gameStarted) {
-            gameStarted=true;
+            gameStarted = true;
         }
     
     if (guessedLetters.indexOf(letter) === -1) {
         guessedLetters.push(letter);
-        evaluatedGuess(letter);
+        evaluateGuess(letter);
     }
 }
-};
 
 updateDisplay();
 checkWin();
 
-function evaluateGuess(letter) {
-    var positions = []
+};
 
-    for(var i = 0; i < selectableWords[currentWordIndex].length; i++) {
-        if(selectableWords[currentWordIndex][i] === letter) {
+
+
+function evaluateGuess(letter) {
+var positions = [];
+
+    for(var i = 0; i < wordChoices[currentWordIndex].length; i++) {
+        if(wordChoices[currentWordIndex][i] === letter) {
             positions.push(i);
         }
     }
@@ -130,19 +134,19 @@ function evaluateGuess(letter) {
             guessingWord[positions[i]] = letter;
         }
     }
-}
+};
 
 function checkWin() {
     if(guessingWord.indexOf("_") === -1) {
-        document.getElementById("winner").style.cssText = "display.block";
+        document.getElementById("winner").style.cssText = "display: block";
 
-        document.getElementById("pressKeyTryAgain").style.cssText = "display.block";
+        document.getElementById("pressKeyTryAgain").style.cssText = "display: block";
 
         wins++;
 
-        hasFinished = true;
+        gameFinished = true;
     }
-}
-}
+};
+
 
 

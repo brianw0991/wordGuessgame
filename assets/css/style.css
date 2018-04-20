@@ -26,9 +26,8 @@ h4,h5,h6 {
     letter-spacing: 10px;
 }
 
-#pressKeyTryAgain, 
-#loser, 
-#winner { display: none;}
+#pressKeyTryAgain, #loser, #winner { display: none;}
+
 .gameplay-column {
     padding-top: 20px;
     border: 3px dashed #fff;
